@@ -22,7 +22,7 @@ session = Session()
 @bot.event
 async def on_ready():
     print("Hello!Le Spud is ready")
-    channel = bot.get_channel(CHANNEL_ID)
+    channel = bot.get_channel(CHANNEL_ID2)
     await channel.send("Le Spud is ready!")
 
 #Le Spud greetings [hello,hey,hi,sup]
@@ -52,7 +52,7 @@ async def info(ctx):
     await ctx.send("To use Le Spud call `'Spud'` then enter a command: (**various greetings**),(**timer**:`'start'`,`'end'`)(**Maths**:`'add'` followed by numbers)(**help**:`'info'`) ")
 #Le Spud Math brain
 @bot.command()
-async def add(ctx,*arr):
+async def add(ctx, *arr):
     result = 0
     for i in arr:
          result += int(i)
