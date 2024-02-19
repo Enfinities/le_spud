@@ -122,7 +122,7 @@ async def quotes(ctx):
 try:
     with open(QUOTES_FILE, 'r') as f:
         pass
-except FileNotFoundError:
+except (FileNotFoundError, PermissionError):
     with open(QUOTES_FILE, 'w') as f:
         json.dump([], f)
 
