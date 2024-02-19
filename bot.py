@@ -130,4 +130,5 @@ if __name__ == "__main__":
     # Set the cwd to the directory where this file lives
     os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
-bot.run(BOT_TOKEN)
+    bot.start(BOT_TOKEN)
+    bot.run(BOT_TOKEN)
