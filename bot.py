@@ -118,17 +118,17 @@ async def quotes(ctx):
     else:
         await ctx.send('No quotes found.')
 
-# Ensure the JSON file exists and contains an empty list if it doesn't exist yet
-try:
-    with open(QUOTES_FILE, 'r') as f:
-        pass
-except (FileNotFoundError, PermissionError):
-    with open(QUOTES_FILE, 'w') as f:
-        json.dump([], f)
 
 if __name__ == "__main__":
     # Set the cwd to the directory where this file lives
     os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
+    #Ensure the JSON file exists and contains an empty list if it doesn't exist yet
+    try:
+        with open(QUOTES_FILE, 'r') as f:
+            pass
+    except (FileNotFoundError, PermissionError):
+        with open(QUOTES_FILE, 'w') as f:
+            json.dump([], f)
 
     bot.run(BOT_TOKEN)
