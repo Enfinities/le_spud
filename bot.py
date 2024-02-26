@@ -4,12 +4,13 @@ import discord
 from dataclasses import dataclass
 import json
 import os
+from decouple import config
+import interactions
 
-VAR_1 = 'MTIwODI0NDI0OTk0MzA4MDk4MA.GOG7YU.PIr4Rm-'
-VAR_2 = 'lfqPAHOcuhDgqLhOKyj9iroUsRuWapY'
-BOT_TOKEN = VAR_1 + VAR_2
-CHANNEL_ID = 1208251750524526632
+BOT_TOKEN = config('BOT_TOKEN1')
+CHANNEL_ID = config('CHANNEL_ID')
 CHANNEL_ID2 = 1193641674237296732
+
 @dataclass
 class Session:
     is_active: bool = False
@@ -17,7 +18,6 @@ class Session:
 
 bot = commands.Bot(command_prefix="Spud ", intents=discord.Intents.all())
 session = Session()
-
 
 @bot.event
 async def on_ready():
@@ -51,6 +51,9 @@ async def greetings(ctx):
 async def info(ctx):
     await ctx.send("To use Le Spud call `'Spud'` then enter a command: (**various greetings**),(**timer**:`'start'`,`'end'`)(**Maths**:`'add'` followed by numbers)(**help**:`'info'`) ")
 #Le Spud Math brain
+async def yes(ctx, x, y):
+    results = int(x) + int(y)
+    await ctx.send(f"Sure! {x} plus {y} equals {results}")
 @bot.command()
 async def add(ctx, *arr):
     result = 0
@@ -117,6 +120,19 @@ async def quotes(ctx):
         await ctx.send(f'**Quotes:**\n{quotes_list}')
     else:
         await ctx.send('No quotes found.')
+
+#make Le bot @ppl
+@bot.command()
+async def target(ctx, member: discord.Member):
+    await ctx.send(f"Hey {member.mention}, {ctx.author.mention} targets you")
+
+@bot.command()
+async def say(ctx, *, message: str):
+    await ctx.send(message)
+
+@bot.command()
+async def tell(ctx, member: discord.Member, *, message: str):
+    await ctx.send(f"Hey {member.mention}, {ctx.author.mention} has a message for you: {message}")
 
 
 if __name__ == "__main__":
