@@ -6,11 +6,12 @@ import json
 import os
 from decouple import config
 import interactions
-
-BOT_TOKEN = config('BOT_TOKEN1')
+Var_1=config('VAR1')
+Var_2=config('VAR2')
+BOT_TOKEN=Var_1 + Var_2
+#BOT_TOKEN = config('BOT_TOKEN1')
 CHANNEL_ID = config('CHANNEL_ID')
 CHANNEL_ID2 = 1193641674237296732
-
 @dataclass
 class Session:
     is_active: bool = False
