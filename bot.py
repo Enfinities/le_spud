@@ -87,13 +87,47 @@ async def end(ctx):
     human_readable_duration = str(datetime.timedelta(seconds=duration))
     await ctx.send(f"Session ended at {human_readable_time}. Duration {human_readable_duration}")
 
+#Le spud points system
+POINTS_FILE = 'points.json'
+
+def load_points():
+    if not os.path.exists(POINTS_FILE):
+        return {}
+
+    with open(POINTS_FILE, 'r') as f:
+        return json.load(f)
+def save_points(points):
+    with open(POINTS_FILE, 'w') as f:
+        json.dump(points, f)
+
+def modify_points(member_id, points_delta):
+    points = load_points()
+    points[member_id] = points.get(member_id, 0) + points_delta
+    save_points(points)
+def get_points(member_id):
+    points = load_points()
+    return points.get(member_id, 0)
+
+#commands (plus, minus, points)
+@bot.command()
+async def plus(ctx, member: discord.Member, points: int):
+    modify_points(member.id, points)
+    await ctx.send(f"Added {points} points to {member.display_name}!")
+
+     # Bot command to subtract points from a member
+@bot.command()
+async def minus(ctx, member: discord.Member, points: int):
+    modify_points(member.id, -points)
+    await ctx.send(f"Subtracted {points} points from {member.display_name}!")
+@bot.command()
+async def points(ctx, member: discord.Member = None):
+    member = member or ctx.author  # Use the command invoker if member is not provided
+    points = get_points(member.id)
+    await ctx.send(f"{member.display_name} has {points} points!")
 #Le spud quotes
 
 # Define the path to the JSON file where quotes will be stored
 QUOTES_FILE = 'quotes.json'
-
-
-
 
 @bot.command()
 async def quote(ctx, *, quote):
