@@ -102,10 +102,14 @@ def save_points(points):
 
 def modify_points(member_id, points_delta):
     points = load_points()
+    member_id = str(member_id)
     points[member_id] = points.get(member_id, 0) + points_delta
     save_points(points)
 def get_points(member_id):
     points = load_points()
+    print(points)
+    print(member_id)
+    member_id = str(member_id)
     return points.get(member_id, 0)
 
 #commands (plus, minus, points)
@@ -124,6 +128,7 @@ async def points(ctx, member: discord.Member = None):
     member = member or ctx.author  # Use the command invoker if member is not provided
     points = get_points(member.id)
     await ctx.send(f"{member.display_name} has {points} points!")
+    #print(points)
 #Le spud quotes
 
 # Define the path to the JSON file where quotes will be stored
