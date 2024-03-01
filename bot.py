@@ -17,7 +17,7 @@ class Session:
     is_active: bool = False
     start_time: int = 0
 
-bot = commands.Bot(command_prefix="Spud ", intents=discord.Intents.all())
+bot = commands.Bot(command_prefix="Spud", intents=discord.Intents.all())
 session = Session()
 
 @bot.event
