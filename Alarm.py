@@ -143,27 +143,3 @@ async def info(ctx):
                "To call Clock bot say '**Clock**' then say one of the following commands:\n"
                "**set**<time24h><day>, **unset**<time24h><day>**, alarms, date**")
 bot.run(BOT_TOKEN)
-#quick notes
-
-
-
-
-#love bot:
-#active = (t/f)
-#wholesome/supportive gif generator
-# request words of encouragement to return a random quote
-#secret NSFW mode
-# -will change toggle to exact same code but with nsfw gifs/quotes
-# - toggled code will be managed by "if active==T"/if not active == T"
-# testing emoji theory, in disc an emoji has a name can we use emoji as secret key??
-
-# choice bot :
-# present option to the bot > bot selects an option at random.
-# extra features like coin (heads=t/f), toss and dice roll [0,5]
-# allow custom range for random number selection[-∞,∞]
-
-#RPS bot :
-# rock paper scissors (tbd:TO BE DONE VIA INTERACTIONS currently unavail)
-# play does / call to bot. selects one of 3 options
-# bot waits for the call /go call and reads the results of @name win or tie
-# code in for more than 2 players so bot doesnt break. use "*" maybe.
